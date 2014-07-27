@@ -1,0 +1,34 @@
+<html>
+
+<head>
+	<title>
+		UrQA for WEB Test
+	</title>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
+
+	<script type="text/javascript" src="lib/stacktrace.js" ></script>
+	<script type="text/javascript" src="lib/urqaclient.js" ></script>
+</head>
+<body>
+	<div>
+		<p>
+			hello
+		</p>
+	</div>
+
+	<script type="text/javascript" >
+		urqa.init( "10EB2BF7", "1.1", "/urqa_wrapper" );
+
+		try{
+
+			var test = null;
+
+			test.aaa();
+
+		}catch( err ){
+			urqa.send_exception( err );
+		}
+	</script>
+</body>
+
+</html>
