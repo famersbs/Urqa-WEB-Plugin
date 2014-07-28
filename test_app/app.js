@@ -7,31 +7,36 @@ var server = express(); // better instead
 server.configure(function(){
 	server.use("/lib", express.static(__dirname + '/../lib'));
 	server.use(express.static(__dirname + '/public'));
-
-
+	server.set("jsonp callback", true);
     server.use(express.bodyParser());
-    
-    //.use(express.session());
 });
 
-server.post( '/urqa_wrapper', function( req, res ){
-	//res.send('{"test":"aaa"}');
+server.get( '/urqa_wrapper', function( req, res ){
 
-	var uri = req.body.data.uri;
-	var data = req.body.data.data;
+	//console.log('params: ' + JSON.stringify(req.params));
+	//console.log('body: ' + JSON.stringify(req.body));
+	//console.log('query: ' + JSON.stringify(req.query));
+	
+	var uri = req.query.uri;
+	var data = req.query.data;
 
 	args ={
         data:data
     };
 
 	client.post( uri, args, function(data, response){
-            // parsed response body as js object
-            console.log(data);
-            // raw response
-            //console.log(response);
 
-            res.send( data );
+        // parsed response body as js object
+        console.log(data);
+
+        // raw response
+		res.header('Content-type','application/json');
+		res.header('Charset','utf8');
+
+        res.jsonp( data );
+
 	});
+
 });
 
 server.listen(3000);
