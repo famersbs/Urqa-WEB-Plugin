@@ -7,26 +7,29 @@
 	<script type="text/javascript" src="http://code.jquery.com/jquery-2.1.0.min.js" ></script>
 
 	<script type="text/javascript" src="lib/stacktrace.js" ></script>
+	<script type="text/javascript" src="lib/dateformat.js" ></script>
 	<script type="text/javascript" src="lib/urqaclient.js" ></script>
 </head>
 <body>
 	<div>
 		<p>
-			hello
+			<a onclick="test_sendexception()">hello</a>
 		</p>
 	</div>
 
 	<script type="text/javascript" >
 		urqa.init( "10EB2BF7", "1.1", "/urqa_wrapper" );
 
-		try{
+		function test_sendexception(){
+			try{
 
-			var test = null;
+				var test = null;
 
-			test.aaa();
+				test.aaa();
 
-		}catch( err ){
-			urqa.send_exception( err );
+			}catch( err ){
+				urqa.send_exception( err );
+			}
 		}
 	</script>
 </body>

@@ -6,6 +6,7 @@
   "author": "Seo ByeongSeon <famersbs@gmail.com>",
   "dependencies": {
     "express": "3.2.4",
-    "node-rest-client": ""
+    "node-rest-client": "",
+    "dateformat":""
   }
 }

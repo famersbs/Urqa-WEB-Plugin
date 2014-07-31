@@ -20,9 +20,13 @@ server.get( '/urqa_wrapper', function( req, res ){
 	var uri = req.query.uri;
 	var data = req.query.data;
 
+	console.log( data );
+
 	args ={
         data:data
     };
+
+    console.log(uri);
 
 	client.post( uri, args, function(data, response){
 
