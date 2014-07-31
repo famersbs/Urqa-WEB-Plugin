@@ -22,8 +22,9 @@ server.get( '/urqa_wrapper', function( req, res ){
 
 	console.log( data );
 
-	args ={
-        data:data
+	args = {
+        data:data,
+        headers:{"Content-Type": "application/json; charset=utf-8"}
     };
 
     console.log(uri);
